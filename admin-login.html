@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - The Essential Five</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1E40AF;
+            --secondary: #34D399;
+            --dark: #1F2937;
+            --light: #F3F4F6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, #0F339C 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo i {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .logo h1 {
+            color: var(--primary);
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .logo p {
+            color: #6B7280;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--dark);
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #9CA3AF;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--primary) 0%, #0F339C 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(30, 64, 175, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .alert {
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+            border-left: 4px solid;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .alert-error {
+            background: #FEE2E2;
+            color: #DC2626;
+            border-left-color: #DC2626;
+        }
+
+        .alert-success {
+            background: #D1FAE5;
+            color: #059669;
+            border-left-color: #059669;
+        }
+
+        .alert-info {
+            background: #DBEAFE;
+            color: #1E40AF;
+            border-left-color: #1E40AF;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #D1D5DB;
+            font-size: 14px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #E5E7EB;
+        }
+
+        .divider span {
+            padding: 0 10px;
+        }
+
+        .demo-credentials {
+            background: var(--light);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .demo-credentials h4 {
+            color: var(--dark);
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .demo-credentials p {
+            color: #6B7280;
+            font-size: 13px;
+            margin: 4px 0;
+            font-family: monospace;
+            background: white;
+            padding: 6px 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #9CA3AF;
+            font-size: 12px;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--dark);
+        }
+
+        .remember-me input {
+            cursor: pointer;
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 30px 20px;
+            }
+
+            .logo h1 {
+                font-size: 20px;
+            }
+
+            .logo i {
+                font-size: 40px;
+            }
+        }
+
+        /* Loading spinner hidden state */
+        .hidden-loader {
+            display: none;
+        }
+
+        /* Demo credentials tip text */
+        .credentials-tip {
+            font-size: 11px;
+            margin-top: 8px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-card">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <h1>Admin Portal</h1>
+                <p>The Essential Five</p>
+            </div>
+
+            <div id="alert" class="alert"></div>
+
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        placeholder="admin@example.com"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        placeholder="Enter your password"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label class="remember-me">
+                        <input type="checkbox" id="rememberMe" />
+                        <span>Remember me</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span id="btnText">Sign In</span>
+                    <span id="btnLoader" class="loading hidden-loader"></span>
+                </button>
+            </form>
+
+            <div class="divider">
+                <span>Demo Credentials</span>
+            </div>
+
+            <div class="demo-credentials">
+                <h4>🔑 Test Admin Account</h4>
+                <p>Email: admin@cybersecEssentials.com</p>
+                <p>Password: AdminPassword123!</p>
+                <p class="credentials-tip">
+                    💡 Tip: Create a new user from the dashboard or use test credentials above
+                </p>
+            </div>
+
+            <div class="footer">
+                <p>
+                    Not an admin? 
+                    <a href="index.html">Go back to homepage</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:5000/api';
+
+        // Check if already logged in
+        if (localStorage.getItem('adminToken')) {
+            window.location.href = 'admin.html';
+        }
+
+        // Handle login
+        async function handleLogin(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnLoader = document.getElementById('btnLoader');
+
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            btnText.style.display = 'none';
+            btnLoader.style.display = 'inline-block';
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (data.success && data.token) {
+                    // Store token
+                    localStorage.setItem('adminToken', data.token);
+                    
+                    // Store email if remember me is checked
+                    if (rememberMe) {
+                        localStorage.setItem('rememberedEmail', email);
+                    } else {
+                        localStorage.removeItem('rememberedEmail');
+                    }
+
+                    showAlert('Login successful! Redirecting...', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'admin.html';
+                    }, 1000);
+                } else {
+                    showAlert(data.message || 'Login failed. Please check your credentials.', 'error');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showAlert('Connection error. Make sure the backend is running on http://localhost:5000', 'error');
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                btnText.style.display = 'inline';
+                btnLoader.style.display = 'none';
+            }
+        }
+
+        // Show alert
+        function showAlert(message, type) {
+            const alert = document.getElementById('alert');
+            alert.textContent = message;
+            alert.className = `alert show alert-${type}`;
+            
+            if (type !== 'error') {
+                setTimeout(() => alert.classList.remove('show'), 3000);
+            }
+        }
+
+        // Load remembered email if exists
+        window.addEventListener('load', function() {
+            const rememberedEmail = localStorage.getItem('rememberedEmail');
+            if (rememberedEmail) {
+                document.getElementById('email').value = rememberedEmail;
+                document.getElementById('rememberMe').checked = true;
+                document.getElementById('password').focus();
+            }
+        });
+
+        // Allow Enter key to submit
+        document.getElementById('loginForm').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                handleLogin(event);
+            }
+        });
+    </script>
+</body>
+</html>

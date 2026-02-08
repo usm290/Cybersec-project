@@ -1,0 +1,337 @@
+/* === TAILWIND CONFIGURATION & CUSTOM STYLES === */
+
+/* === DARK MODE STYLES === */
+
+/* Root variables for light and dark modes */
+:root {
+    --bg-primary: #F9FAFB;
+    --bg-secondary: #FFFFFF;
+    --text-primary: #1F2937;
+    --text-secondary: #6B7280;
+    --border-color: #E5E7EB;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+html.dark-mode {
+    --bg-primary: #111827;
+    --bg-secondary: #1F2937;
+    --text-primary: #F3F4F6;
+    --text-secondary: #D1D5DB;
+    --border-color: #374151;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+html.dark-mode {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+html.dark-mode body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+html.dark-mode .bg-background {
+    background-color: var(--bg-primary);
+}
+
+html.dark-mode .bg-card-bg {
+    background-color: var(--bg-secondary);
+}
+
+html.dark-mode .text-gray-900,
+html.dark-mode .text-gray-800,
+html.dark-mode .text-gray-700 {
+    color: var(--text-primary);
+}
+
+html.dark-mode .text-gray-600,
+html.dark-mode .text-gray-500 {
+    color: var(--text-secondary);
+}
+
+html.dark-mode .bg-gray-100,
+html.dark-mode .bg-gray-50 {
+    background-color: #374151;
+}
+
+html.dark-mode .border-gray-200 {
+    border-color: var(--border-color);
+}
+
+html.dark-mode .border-gray-300 {
+    border-color: #4B5563;
+}
+
+html.dark-mode .bg-gray-800 {
+    background-color: #1F2937;
+}
+
+html.dark-mode .bg-blue-50,
+html.dark-mode .bg-secondary\/10 {
+    background-color: rgba(30, 64, 175, 0.1);
+}
+
+html.dark-mode .bg-yellow-100 {
+    background-color: rgba(217, 119, 6, 0.2);
+}
+
+html.dark-mode .text-yellow-800,
+html.dark-mode .text-yellow-700 {
+    color: #FCD34D;
+}
+
+html.dark-mode .bg-blue-100 {
+    background-color: rgba(30, 64, 175, 0.2);
+}
+
+html.dark-mode .text-blue-800 {
+    color: #93C5FD;
+}
+
+html.dark-mode .bg-red-100 {
+    background-color: rgba(239, 68, 68, 0.2);
+}
+
+html.dark-mode .text-red-800,
+html.dark-mode .text-red-700,
+html.dark-mode .text-red-600 {
+    color: #FCA5A5;
+}
+
+html.dark-mode .bg-green-50 {
+    background-color: rgba(52, 211, 153, 0.1);
+}
+
+html.dark-mode .hover\:bg-gray-100:hover {
+    background-color: #374151;
+}
+
+html.dark-mode .nav,
+html.dark-mode nav {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+}
+
+html.dark-mode footer {
+    background-color: #0F172A;
+}
+
+/* Dark mode toggle button styling */
+.dark-mode-toggle {
+    padding: 8px 14px;
+    background: transparent;
+    color: #1E40AF;
+    border: 2px solid #1E40AF;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.dark-mode-toggle:hover {
+    background: #1E40AF;
+    color: white;
+    transform: scale(1.05);
+}
+
+html.dark-mode .dark-mode-toggle {
+    color: #34D399;
+    border-color: #34D399;
+}
+
+html.dark-mode .dark-mode-toggle:hover {
+    background: #34D399;
+    color: #111827;
+}
+
+/* === ANIMATIONS === */
+
+/* Fade in and slide up animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Slide in from left animation */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Slide in from right animation */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Scale in animation */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Bounce in animation */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Pulse animation for highlights */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Logo spin animation */
+@keyframes logoSpin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* === ANIMATION UTILITY CLASSES === */
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-bounce-in {
+    animation: bounceIn 0.6s ease-out forwards;
+}
+
+.animate-pulse-custom {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.logo-animate:hover {
+    animation: logoSpin 0.6s ease-in-out;
+}
+
+/* Stagger animations for multiple elements */
+.animate-stagger-1 {
+    animation-delay: 0.1s;
+}
+
+.animate-stagger-2 {
+    animation-delay: 0.2s;
+}
+
+.animate-stagger-3 {
+    animation-delay: 0.3s;
+}
+
+.animate-stagger-4 {
+    animation-delay: 0.4s;
+}
+
+.animate-stagger-5 {
+    animation-delay: 0.5s;
+}
+
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #9CA3AF;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #E5E7EB;
+}
+
+/* Active module item styling */
+.module-item.active {
+    background-color: #DBEAFE; /* Light Blue */
+    color: #1E40AF; /* Dark Blue */
+    font-weight: 700;
+    border-left: 4px solid #1E40AF;
+}
+
+/* Module item transitions */
+.module-item {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Start button styling and hover effects */
+.start-button {
+    transition: all 0.3s ease;
+}
+
+.start-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(30, 64, 175, 0.3), 0 4px 6px -2px rgba(30, 64, 175, 0.05);
+}

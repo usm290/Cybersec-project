@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Essential Five: Cybersecurity Awareness</title>
+    <!-- Load Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind to use a clean font and custom styles -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#1E40AF', // Blue
+                        'secondary': '#34D399', // Green
+                        'background': '#F9FAFB', // Light Gray
+                        'card-bg': '#FFFFFF',
+                        'accent-dark': '#0F339C', // Darker Blue for hover
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-background font-sans min-h-screen">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-card-bg shadow-md border-b-2 border-primary/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <img src="logo.svg" alt="CyberSec Essentials Logo" class="w-8 h-8 logo-animate transition duration-300">
+                    <h1 class="text-2xl font-bold text-primary">CyberSec Essentials</h1>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="index.html" class="text-primary font-bold border-b-2 border-primary pb-2">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-primary transition duration-150 font-medium">About Course</a>
+                    <a href="aboutme.html" class="text-gray-700 hover:text-primary transition duration-150 font-medium">About Me</a>
+                    <button class="dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle Dark Mode">
+                        <span id="theme-icon">🌙</span>
+                        <span id="theme-text">Dark</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="app" class="min-h-screen">
+
+        <!-- 1. HOME VIEW -->
+        <div id="home-view" class="flex flex-col items-center justify-center min-h-screen text-center p-6 hidden">
+            <div class="max-w-3xl w-full bg-card-bg p-8 md:p-12 rounded-2xl shadow-2xl border-t-8 border-secondary animate-scale-in">
+                
+                <div class="text-primary mx-auto mb-6 animate-bounce-in animate-stagger-1">
+                    <img src="logo.svg" alt="CyberSec Essentials Logo" class="w-24 h-24 mx-auto">
+                </div>
+
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight animate-fade-in-up animate-stagger-2">
+                    Welcome to The Essential Five
+                </h1>
+                <h2 class="text-xl md:text-2xl font-semibold text-secondary mb-6 animate-fade-in-up animate-stagger-3">
+                    Your guide to digital safety and security.
+                </h2>
+                
+                <p class="text-gray-600 mb-8 max-w-xl mx-auto animate-fade-in-up animate-stagger-4">
+                    In today's digital world, you are the first line of defense. This course covers the 5 core areas you need to master to protect yourself, your information, and your organization from common cyber threats.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 animate-fade-in-up animate-stagger-5">
+                    <button id="start-learning-btn" onclick="showView('course'); loadModule(0);"
+                        class="start-button bg-primary text-card-bg font-bold py-3 px-8 rounded-full shadow-lg hover:bg-accent-dark transition duration-300 transform flex items-center justify-center mx-auto text-lg">
+                        Start Learning Modules
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                    <button id="start-quiz-btn-home" onclick="showView('quiz'); startQuiz();"
+                        class="start-button bg-secondary text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-green-600 hover:text-card-bg transition duration-300 transform flex items-center justify-center mx-auto text-lg">
+                        Take Final Quiz
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+                    </button>
+                </div>
+                
+                <ul class="grid grid-cols-1 sm:grid-cols-5 gap-4 text-sm font-medium text-gray-700 animate-fade-in-up">
+                    <li class="p-3 bg-gray-100 rounded-lg shadow-sm border border-gray-200 animate-slide-in-left animate-stagger-1">1. Digital Identity</li>
+                    <li class="p-3 bg-gray-100 rounded-lg shadow-sm border border-gray-200 animate-slide-in-left animate-stagger-2">2. Phishing</li>
+                    <li class="p-3 bg-gray-100 rounded-lg shadow-sm border border-gray-200 animate-slide-in-left animate-stagger-3">3. Malware</li>
+                    <li class="p-3 bg-gray-100 rounded-lg shadow-sm border border-gray-200 animate-slide-in-left animate-stagger-4">4. Data Handling</li>
+                    <li class="p-3 bg-gray-100 rounded-lg shadow-sm border border-gray-200 animate-slide-in-left animate-stagger-5">5. Incident Response</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 2. COURSE VIEW (Learning Modules Layout) -->
+        <div id="course-view" class="flex flex-col lg:flex-row min-h-screen hidden">
+            <!-- Sidebar Navigation -->
+            <aside class="w-full lg:w-72 bg-card-bg shadow-xl lg:shadow-md border-b-4 lg:border-r-4 border-primary/20 p-4 lg:p-6 flex-shrink-0 animate-slide-in-left">
+                <header class="mb-8">
+                    <a href="#" onclick="showView('home'); return false;" class="text-sm font-semibold text-primary hover:text-accent-dark transition duration-150 flex items-center mb-4">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                        Back to Home
+                    </a>
+
+                    <h1 class="text-2xl font-extrabold text-primary flex items-center animate-fade-in-up">
+                        <svg class="w-7 h-7 mr-2 text-secondary" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-9a1 1 0 000 2h2a1 1 0 100-2h-2zm0 4a1 1 0 000 2h2a1 1 0 100-2h-2z" clip-rule="evenodd"></path></svg>
+                        CyberSec Essentials
+                    </h1>
+                    <p class="text-sm text-gray-500 mt-1 animate-fade-in-up">5-Module Awareness Course</p>
+                </header>
+
+                <nav>
+                    <ul id="module-list" class="space-y-2 mb-6">
+                        <!-- Module list items will be injected here by JavaScript -->
+                    </ul>
+                    
+                    <button onclick="showView('quiz'); startQuiz();"
+                        class="w-full bg-secondary text-gray-900 font-bold py-2 px-4 rounded-lg shadow-md hover:bg-green-600 hover:text-card-bg transition duration-300 flex items-center justify-center text-sm animate-fade-in-up">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+                        Take Final Quiz (20 Qs)
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="flex-grow p-4 md:p-8 lg:p-12 overflow-y-auto">
+                <div id="module-content" class="bg-card-bg p-6 md:p-10 rounded-xl shadow-2xl border-t-4 border-secondary max-w-4xl mx-auto animate-fade-in-up">
+                    <!-- Content will be injected here by JavaScript -->
+                </div>
+            </main>
+        </div>
+
+        <!-- 3. QUIZ VIEW -->
+        <div id="quiz-view" class="flex flex-col items-center justify-start min-h-screen pt-12 pb-12 p-6 hidden">
+            <div class="max-w-3xl w-full bg-card-bg p-8 md:p-12 rounded-2xl shadow-2xl border-t-8 border-primary animate-scale-in">
+                <div class="flex justify-between items-center mb-6 border-b pb-4 animate-fade-in-up animate-stagger-1">
+                    <h1 class="text-3xl font-extrabold text-primary">Cyber Awareness Quiz</h1>
+                    <a href="#" onclick="showView('home'); return false;" class="text-sm font-semibold text-gray-500 hover:text-primary transition duration-150">
+                        Exit Quiz
+                    </a>
+                </div>
+
+                <!-- Quiz Container -->
+                <div id="quiz-container" class="animate-fade-in-up animate-stagger-2">
+                    <p id="quiz-status" class="text-sm text-gray-600 mb-4"></p>
+                    <div id="question-area" class="min-h-[200px] flex flex-col justify-between">
+                        <!-- Question and options will be displayed here -->
+                    </div>
+                </div>
+
+                <!-- Result Container -->
+                <div id="result-container" class="hidden animate-fade-in-up">
+                    <h2 id="result-title" class="text-4xl font-bold mb-2 text-center"></h2>
+                    <p id="result-message" class="text-lg text-gray-700 mb-8 text-center"></p>
+                    
+                    <!-- Overall Score -->
+                    <div class="bg-blue-50 p-6 rounded-xl shadow-inner mb-8 text-center animate-bounce-in">
+                        <p class="text-xl font-semibold text-primary mb-1">Overall Score</p>
+                        <p class="text-6xl font-extrabold text-primary"><span id="score-display"></span></p>
+                    </div>
+
+                    <!-- Performance Breakdown -->
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Performance Breakdown by Module</h3>
+                    <div id="performance-breakdown" class="space-y-4 animate-fade-in-up">
+                        <!-- Detailed performance will be injected here -->
+                    </div>
+                    
+                    <div class="mt-10 pt-6 border-t border-gray-200 flex justify-center space-x-4 animate-fade-in-up animate-stagger-3">
+                        <button onclick="startQuiz()"
+                            class="bg-primary text-card-bg font-bold py-3 px-6 rounded-full shadow-lg hover:bg-accent-dark transition duration-300 transform text-lg">
+                            Retake Quiz
+                        </button>
+                        <button onclick="showView('course'); loadModule(0);"
+                            class="bg-gray-200 text-gray-800 font-bold py-3 px-6 rounded-full shadow-lg hover:bg-gray-300 transition duration-300 transform text-lg">
+                            Review Modules
+                    </button>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-8 mt-16">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <p class="mb-2">&copy; 2025 The Essential Five: Cybersecurity Awareness. All rights reserved.</p>
+            <p class="text-sm">Protecting digital futures, one aware user at a time.</p>
+            <div class="mt-4 space-x-4">
+                <a href="index.html" class="text-gray-400 hover:text-secondary transition">Home</a>
+                <a href="about.html" class="text-gray-400 hover:text-secondary transition">About Course</a>
+                <a href="aboutme.html" class="text-gray-400 hover:text-secondary transition">About Me</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - The Essential Five: Cybersecurity Awareness</title>
+    <!-- Load Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind to use a clean font and custom styles -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#1E40AF', // Blue
+                        'secondary': '#34D399', // Green
+                        'background': '#F9FAFB', // Light Gray
+                        'card-bg': '#FFFFFF',
+                        'accent-dark': '#0F339C', // Darker Blue for hover
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-background font-sans min-h-screen">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-card-bg shadow-md border-b-2 border-primary/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <img src="logo.svg" alt="CyberSec Essentials Logo" class="w-8 h-8 logo-animate transition duration-300">
+                    <h1 class="text-2xl font-bold text-primary">CyberSec Essentials</h1>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-primary transition duration-150 font-medium">Home</a>
+                    <a href="about.html" class="text-primary font-bold border-b-2 border-primary pb-2">About Course</a>
+                    <a href="aboutme.html" class="text-gray-700 hover:text-primary transition duration-150 font-medium">About Me</a>
+                    <button class="dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle Dark Mode">
+                        <span id="theme-icon">🌙</span>
+                        <span id="theme-text">Dark</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-primary to-accent-dark text-white py-16 px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
+                    About The Essential Five
+                </h1>
+                <p class="text-lg md:text-xl text-gray-100 mb-6">
+                    Empowering individuals with the knowledge to protect themselves, their data, and their organizations in the digital world.
+                </p>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="max-w-5xl mx-auto px-6 py-16">
+            
+            <!-- Course Overview -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold text-primary mb-6 border-b-4 border-secondary pb-3">Course Overview</h2>
+                <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                    <strong>The Essential Five: Cybersecurity Awareness</strong> is a comprehensive training program designed to educate individuals about the fundamental principles of cybersecurity and digital safety. In an increasingly connected world, cyber threats are evolving at an alarming pace, and the human element remains the most critical defense against these attacks.
+                </p>
+                <p class="text-gray-700 text-lg leading-relaxed">
+                    This course covers the five core areas of cybersecurity awareness that every individual in an organization should understand. By completing this course, you'll be better equipped to recognize threats, respond appropriately, and contribute to a stronger security posture.
+                </p>
+            </div>
+
+            <!-- The Five Modules -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold text-primary mb-6 border-b-4 border-secondary pb-3">The Five Essential Modules</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Module 1 -->
+                    <div class="bg-card-bg p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-primary">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-6 h-6 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.5 1.5H5.75A2.25 2.25 0 003.5 3.75v12.5A2.25 2.25 0 005.75 18.5h8.5a2.25 2.25 0 002.25-2.25V6.5m-11-5v5m8-5v5M3.5 9.5h13"></path></svg>
+                            <h3 class="text-xl font-bold text-primary">1. Digital Identity</h3>
+                        </div>
+                        <p class="text-gray-700">
+                            Master password management, multi-factor authentication, and protect your digital identity from unauthorized access.
+                        </p>
+                    </div>
+
+                    <!-- Module 2 -->
+                    <div class="bg-card-bg p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-secondary">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-6 h-6 text-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                            <h3 class="text-xl font-bold text-secondary">2. Phishing & Social Engineering</h3>
+                        </div>
+                        <p class="text-gray-700">
+                            Identify phishing attempts, social engineering tactics, and learn how to report suspicious communications.
+                        </p>
+                    </div>
+
+                    <!-- Module 3 -->
+                    <div class="bg-card-bg p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-primary">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-6 h-6 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                            <h3 class="text-xl font-bold text-primary">3. Malware & Mobile Security</h3>
+                        </div>
+                        <p class="text-gray-700">
+                            Understand malware types, ransomware threats, and secure your mobile devices from cyber attacks.
+                        </p>
+                    </div>
+
+                    <!-- Module 4 -->
+                    <div class="bg-card-bg p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-secondary">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-6 h-6 text-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+                            <h3 class="text-xl font-bold text-secondary">4. Data Handling & Privacy</h3>
+                        </div>
+                        <p class="text-gray-700">
+                            Learn proper data classification, secure storage, and comply with organizational data protection policies.
+                        </p>
+                    </div>
+
+                    <!-- Module 5 -->
+                    <div class="bg-card-bg p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-primary col-span-1 md:col-span-2">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-6 h-6 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path></svg>
+                            <h3 class="text-xl font-bold text-primary">5. Incident Response</h3>
+                        </div>
+                        <p class="text-gray-700">
+                            Know how to recognize and respond to security incidents, minimize damage, and support your security team.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Features -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold text-primary mb-6 border-b-4 border-secondary pb-3">Key Features</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-10 w-10 rounded-md bg-secondary text-white">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Interactive Learning</h3>
+                            <p class="text-gray-700 mt-1">Engage with interactive demonstrations, including a password strength checker.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-10 w-10 rounded-md bg-secondary text-white">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m7 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Comprehensive Quiz</h3>
+                            <p class="text-gray-700 mt-1">Test your knowledge with a 20-question quiz covering all five modules.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-10 w-10 rounded-md bg-secondary text-white">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Detailed Feedback</h3>
+                            <p class="text-gray-700 mt-1">Receive comprehensive performance analysis by module with recommendations.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-10 w-10 rounded-md bg-secondary text-white">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Self-Paced Learning</h3>
+                            <p class="text-gray-700 mt-1">Complete the course at your own pace, any time, anywhere.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why This Matters -->
+            <div class="mb-16 bg-blue-50 p-8 rounded-xl border-l-4 border-primary">
+                <h2 class="text-3xl font-bold text-primary mb-4">Why This Matters</h2>
+                <p class="text-gray-800 text-lg leading-relaxed mb-4">
+                    Cybersecurity is no longer the responsibility of IT departments alone. Every employee is a potential entry point for cyber attackers, making awareness and training essential components of any security strategy.
+                </p>
+                <p class="text-gray-800 text-lg leading-relaxed mb-4">
+                    According to industry reports, <strong>85% of data breaches involve a human element</strong>. By understanding the tactics used by attackers and following best practices, you become the strongest link in your organization's security chain.
+                </p>
+                <p class="text-gray-800 text-lg leading-relaxed">
+                    This course empowers you to protect not just yourself, but your colleagues and your entire organization from cyber threats.
+                </p>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="text-center bg-gradient-to-r from-primary to-accent-dark text-white py-12 px-8 rounded-xl shadow-lg">
+                <h2 class="text-3xl font-bold mb-4">Ready to Become a Cyber Defender?</h2>
+                <p class="text-lg mb-8 text-gray-100">Start your cybersecurity awareness journey today.</p>
+                <a href="index.html" class="inline-block bg-secondary text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-green-500 transition duration-300 transform hover:scale-105">
+                    Start the Course
+                </a>
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-gray-300 py-8 mt-16">
+            <div class="max-w-5xl mx-auto px-6 text-center">
+                <p class="mb-2">&copy; 2025 The Essential Five: Cybersecurity Awareness. All rights reserved.</p>
+                <p class="text-sm">Protecting digital futures, one aware user at a time.</p>
+                <div class="mt-4 space-x-4">
+                    <a href="index.html" class="text-gray-400 hover:text-secondary transition">Home</a>
+                    <a href="about.html" class="text-gray-400 hover:text-secondary transition">About Course</a>
+                    <a href="aboutme.html" class="text-gray-400 hover:text-secondary transition">About Me</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+</body>
+</html>

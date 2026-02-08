@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - The Essential Five</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1E40AF;
+            --secondary: #34D399;
+            --danger: #EF4444;
+            --warning: #F59E0B;
+            --success: #10B981;
+            --dark: #1F2937;
+            --light: #F3F4F6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light);
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, var(--primary) 0%, #0F339C 100%);
+            color: white;
+            min-height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar.collapsed {
+            width: 80px;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .main-content.expanded {
+            margin-left: 80px;
+        }
+
+        .sidebar h2 {
+            padding: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+        }
+
+        .sidebar-menu li {
+            margin: 0;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--secondary);
+        }
+
+        .sidebar-menu i {
+            width: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .sidebar-menu span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .sidebar.collapsed span {
+            display: none;
+        }
+
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            color: var(--primary);
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: #6B7280;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .stat-icon {
+            font-size: 40px;
+            opacity: 0.2;
+            color: var(--primary);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .table th {
+            background: var(--light);
+            padding: 12px;
+            text-align: left;
+            color: var(--dark);
+            font-weight: 600;
+            border-bottom: 2px solid #E5E7EB;
+        }
+
+        .table td {
+            padding: 12px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .table tr:hover {
+            background: var(--light);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background: #D1FAE5;
+            color: var(--success);
+        }
+
+        .badge-danger {
+            background: #FEE2E2;
+            color: var(--danger);
+        }
+
+        .badge-warning {
+            background: #FEF3C7;
+            color: var(--warning);
+        }
+
+        .badge-info {
+            background: #DBEAFE;
+            color: var(--primary);
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1E3A8A;
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #10B981;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #DC2626;
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .alert-success {
+            background: #D1FAE5;
+            color: var(--success);
+            border-left: 4px solid var(--success);
+        }
+
+        .alert-error {
+            background: #FEE2E2;
+            color: var(--danger);
+            border-left: 4px solid var(--danger);
+        }
+
+        .alert-info {
+            background: #DBEAFE;
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6B7280;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #D1D5DB;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .chart {
+            height: 300px;
+            background: var(--light);
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 15px;
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(180deg, var(--primary), #0F339C);
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            min-height: 20px;
+        }
+
+        .chart-bar label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: var(--dark);
+            white-space: nowrap;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6B7280;
+        }
+
+        .empty-state i {
+            font-size: 48px;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+
+        .empty-state p {
+            margin-bottom: 15px;
+        }
+
+        /* Additional utility classes for inline style replacements */
+        .text-bold-dark {
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .font-bold-dark {
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .flex-space-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        /* Allow dynamic heights for chart bars via data attributes */
+        .chart-bar {
+            height: calc(var(--bar-height, 50) * 1%);
+        }
+
+        .chart-bar[data-height="30"] { --bar-height: 30; }
+        .chart-bar[data-height="45"] { --bar-height: 45; }
+        .chart-bar[data-height="50"] { --bar-height: 50; }
+        .chart-bar[data-height="60"] { --bar-height: 60; }
+        .chart-bar[data-height="75"] { --bar-height: 75; }
+        .chart-bar[data-height="80"] { --bar-height: 80; }
+        .chart-bar[data-height="85"] { --bar-height: 85; }
+    </style>        .text-center-light {
+            text-align: center;
+            color: #999;
+        }
+
+        .btn-margin-top {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>
+            <i class="fas fa-shield-alt"></i>
+            <span>Admin Panel</span>
+        </h2>
+        <ul class="sidebar-menu">
+            <li><a class="menu-link active" data-section="dashboard" onclick="switchSection('dashboard')">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a></li>
+            <li><a class="menu-link" data-section="users" onclick="switchSection('users')">
+                <i class="fas fa-users"></i>
+                <span>Users</span>
+            </a></li>
+            <li><a class="menu-link" data-section="analytics" onclick="switchSection('analytics')">
+                <i class="fas fa-bar-chart"></i>
+                <span>Analytics</span>
+            </a></li>
+            <li><a class="menu-link" data-section="quizzes" onclick="switchSection('quizzes')">
+                <i class="fas fa-tasks"></i>
+                <span>Quizzes</span>
+            </a></li>
+            <li><a class="menu-link" data-section="settings" onclick="switchSection('settings')">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+            <h1><i class="fas fa-shield-alt"></i> Admin Dashboard</h1>
+            <div class="user-info">
+                <button class="toggle-btn" id="sidebarToggle" title="Toggle Sidebar" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div>
+                    <div class="font-bold-dark">Admin</div>
+                    <button class="btn btn-danger btn-sm" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alert -->
+        <div id="alert" class="alert"></div>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active">
+            <div class="grid-2">
+                <div class="stat-card">
+                    <div>
+                        <div class="stat-value" id="totalUsers">-</div>
+                        <div class="stat-label">Total Users</div>
+                    </div>
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                </div>
+
+                <div class="stat-card">
+                    <div>
+                        <div class="stat-value" id="activeUsers">-</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                    <div class="stat-icon"><i class="fas fa-user-check"></i></div>
+                </div>
+
+                <div class="stat-card">
+                    <div>
+                        <div class="stat-value" id="totalQuizzes">-</div>
+                        <div class="stat-label">Quiz Attempts</div>
+                    </div>
+                    <div class="stat-icon"><i class="fas fa-tasks"></i></div>
+                </div>
+
+                <div class="stat-card">
+                    <div>
+                        <div class="stat-value" id="avgScore">-</div>
+                        <div class="stat-label">Average Score</div>
+                    </div>
+                    <div class="stat-icon"><i class="fas fa-star"></i></div>
+                </div>
+
+                <div class="stat-card">
+                    <div>
+                        <div class="stat-value" id="certificatesEarned">-</div>
+                        <div class="stat-label">Certificates Earned</div>
+                    </div>
+                    <div class="stat-icon"><i class="fas fa-certificate"></i></div>
+                </div>
+
+                <div class="stat-card">
+                    <div>
+                        <div class="stat-value" id="platformCompletion">-</div>
+                        <div class="stat-label">Avg Completion %</div>
+                    </div>
+                    <div class="stat-icon"><i class="fas fa-percentage"></i></div>
+                </div>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <h3><i class="fas fa-graduation-cap"></i> Course Performance</h3>
+                    <div id="moduleStats">
+                        <div class="empty-state">
+                            <p>Loading modules...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3><i class="fas fa-user-tie"></i> Recent Users</h3>
+                    <div id="recentUsers">
+                        <div class="empty-state">
+                            <p>Loading users...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3><i class="fas fa-info-circle"></i> System Status</h3>
+                    <table class="table">
+                        <tr>
+                            <td class="text-bold-dark">Backend Status</td>
+                            <td><span class="badge badge-success">Online</span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold-dark">Database</td>
+                            <td><span class="badge badge-success">Connected</span></td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold-dark">API Version</td>
+                            <td>v1.0.0</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Users Section -->
+        <section id="users" class="section">
+            <div class="card">
+                <div class="flex-space-between">
+                    <h3><i class="fas fa-users"></i> User Management</h3>
+                    <button class="btn btn-primary" onclick="openUserModal()">
+                        <i class="fas fa-plus"></i> Add User
+                    </button>
+                </div>
+                <div id="usersList">
+                    <div class="empty-state">
+                        <i class="fas fa-spinner"></i>
+                        <p>Loading users...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section id="analytics" class="section">
+            <div class="grid-3">
+                <div class="card">
+                    <h3><i class="fas fa-chart-bar"></i> Weekly Activity</h3>
+                    <div class="chart" id="weeklyChart">
+                        <div class="chart-bar" data-height="60"><label>Mon</label></div>
+                        <div class="chart-bar" data-height="80"><label>Tue</label></div>
+                        <div class="chart-bar" data-height="45"><label>Wed</label></div>
+                        <div class="chart-bar" data-height="75"><label>Thu</label></div>
+                        <div class="chart-bar" data-height="85"><label>Fri</label></div>
+                        <div class="chart-bar" data-height="50"><label>Sat</label></div>
+                        <div class="chart-bar" data-height="30"><label>Sun</label></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3><i class="fas fa-percent"></i> Pass Rate by Module</h3>
+                    <table class="table">
+                        <tr>
+                            <th>Module</th>
+                            <th>Pass Rate</th>
+                        </tr>
+                        <tr>
+                            <td>The Essential Five</td>
+                            <td><span class="badge badge-success">92%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Authentication</td>
+                            <td><span class="badge badge-success">88%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Network Security</td>
+                            <td><span class="badge badge-warning">75%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Cryptography</td>
+                            <td><span class="badge badge-danger">65%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Incident Response</td>
+                            <td><span class="badge badge-warning">70%</span></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h3><i class="fas fa-trophy"></i> Top Performers</h3>
+                    <div id="topPerformers">
+                        <div class="empty-state">
+                            <p>Loading data...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quizzes Section -->
+        <section id="quizzes" class="section">
+            <div class="card">
+                <h3><i class="fas fa-tasks"></i> Quiz Statistics</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Module</th>
+                            <th>Attempts</th>
+                            <th>Avg Score</th>
+                            <th>Pass Rate</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="quizTable">
+                        <tr>
+                            <td colspan="5" class="text-center-light">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings" class="section">
+            <div class="grid-2">
+                <div class="card">
+                    <h3><i class="fas fa-lock"></i> Security Settings</h3>
+                    <div class="form-group">
+                        <label>Change Admin Password</label>
+                        <input type="password" id="newPassword" placeholder="New password" />
+                        <button class="btn btn-primary btn-margin-top" onclick="changePassword()">
+                            <i class="fas fa-check"></i> Update Password
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3><i class="fas fa-info-circle"></i> System Information</h3>
+                    <table class="table">
+                        <tr>
+                            <td class="text-bold-dark">Application</td>
+                            <td>The Essential Five v1.0</td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold-dark">Backend API</td>
+                            <td>v1.0.0</td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold-dark">Database</td>
+                            <td>MongoDB</td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold-dark">Last Updated</td>
+                            <td id="lastUpdate">Dec 3, 2025</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- User Modal -->
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add New User</h2>
+                <button class="modal-close" onclick="closeUserModal()">×</button>
+            </div>
+            <form id="userForm" onsubmit="saveUser(event)">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="userName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="userEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="userPassword" required>
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <select id="userRole">
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-sm" onclick="closeUserModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Save User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:5000/api';
+        let adminToken = localStorage.getItem('adminToken');
+
+        // Check if logged in
+        if (!adminToken) {
+            window.location.href = 'admin-login.html';
+        }
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDashboardData();
+            loadUsers();
+            loadAnalytics();
+        });
+
+        // Switch sections
+        function switchSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.menu-link').forEach(m => m.classList.remove('active'));
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+
+            // Load section-specific data
+            if (sectionId === 'users') loadUsers();
+            if (sectionId === 'analytics') loadAnalytics();
+            if (sectionId === 'quizzes') loadQuizzes();
+        }
+
+        // Load dashboard data
+        async function loadDashboardData() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/admin/statistics`, {
+                    headers: { 'Authorization': `Bearer ${adminToken}` }
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    const stats = data.statistics;
+                    document.getElementById('totalUsers').textContent = stats.totalUsers;
+                    document.getElementById('activeUsers').textContent = stats.activeUsers;
+                    document.getElementById('totalQuizzes').textContent = stats.totalQuizAttempts;
+                    document.getElementById('avgScore').textContent = stats.averageScore + '%';
+                    document.getElementById('certificatesEarned').textContent = stats.certificateEarned;
+                    document.getElementById('platformCompletion').textContent = stats.platformAverageCompletion + '%';
+
+                    // Module stats
+                    loadModuleStats(stats.moduleCompletionStats);
+                }
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+                showAlert('Error loading dashboard data', 'error');
+            }
+        }
+
+        // Load module statistics
+        function loadModuleStats(moduleStats) {
+            const html = Object.entries(moduleStats).map(([moduleId, count]) => `
+                <div style="padding: 10px 0; border-bottom: 1px solid #E5E7EB;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span style="color: var(--dark); font-weight: 600;">Module ${count}</span>
+                        <span style="color: var(--primary); font-weight: 600;">${count} completions</span>
+                    </div>
+                    <div style="background: var(--light); border-radius: 4px; height: 6px; overflow: hidden;">
+                        <div style="background: var(--secondary); height: 100%; width: ${Math.min(count * 10, 100)}%;"></div>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('moduleStats').innerHTML = html || '<p style="color: #999;">No data available</p>';
+        }
+
+        // Load users
+        async function loadUsers() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/admin/users?limit=20`, {
+                    headers: { 'Authorization': `Bearer ${adminToken}` }
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    const users = data.users;
+                    const html = `
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Joined</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${users.map(user => `
+                                    <tr>
+                                        <td>${user.name}</td>
+                                        <td>${user.email}</td>
+                                        <td><span class="badge ${user.role === 'admin' ? 'badge-info' : 'badge-success'}">${user.role}</span></td>
+                                        <td><span class="badge ${user.isActive ? 'badge-success' : 'badge-danger'}">${user.isActive ? 'Active' : 'Inactive'}</span></td>
+                                        <td>${new Date(user.createdAt).toLocaleDateString()}</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary" onclick="editUser('${user._id}')">Edit</button>
+                                            <button class="btn btn-sm btn-danger" onclick="deleteUser('${user._id}', '${user.name}')">Delete</button>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    `;
+                    document.getElementById('usersList').innerHTML = html;
+                } else {
+                    showAlert('Failed to load users', 'error');
+                }
+            } catch (error) {
+                console.error('Error loading users:', error);
+                showAlert('Error loading users', 'error');
+            }
+        }
+
+        // Load analytics
+        async function loadAnalytics() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/admin/analytics?period=month`, {
+                    headers: { 'Authorization': `Bearer ${adminToken}` }
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    const analytics = data.analytics;
+                    
+                    // Top performers
+                    const topPerformersHtml = `
+                        <div style="font-size: 12px;">
+                            <p style="color: #999; margin-bottom: 10px;">Loading top performers...</p>
+                        </div>
+                    `;
+                    document.getElementById('topPerformers').innerHTML = topPerformersHtml;
+                }
+            } catch (error) {
+                console.error('Error loading analytics:', error);
+            }
+        }
+
+        // Load quizzes
+        async function loadQuizzes() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/admin/statistics`, {
+                    headers: { 'Authorization': `Bearer ${adminToken}` }
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    const stats = data.statistics;
+                    const moduleStats = stats.moduleCompletionStats;
+                    
+                    const html = Object.entries(moduleStats).map(([moduleId, count]) => `
+                        <tr>
+                            <td>Module ${moduleId}</td>
+                            <td>${count}</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary" onclick="viewQuizDetails('${moduleId}')">View</button>
+                            </td>
+                        </tr>
+                    `).join('');
+
+                    document.getElementById('quizTable').innerHTML = html;
+                }
+            } catch (error) {
+                console.error('Error loading quizzes:', error);
+            }
+        }
+
+        // User Modal functions
+        function openUserModal() {
+            document.getElementById('modalTitle').textContent = 'Add New User';
+            document.getElementById('userForm').reset();
+            document.getElementById('userModal').classList.add('show');
+        }
+
+        function closeUserModal() {
+            document.getElementById('userModal').classList.remove('show');
+        }
+
+        async function saveUser(event) {
+            event.preventDefault();
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const password = document.getElementById('userPassword').value;
+            const role = document.getElementById('userRole').value;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password })
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    showAlert('User created successfully', 'success');
+                    closeUserModal();
+                    loadUsers();
+                } else {
+                    showAlert('Failed to create user', 'error');
+                }
+            } catch (error) {
+                console.error('Error saving user:', error);
+                showAlert('Error creating user', 'error');
+            }
+        }
+
+        function editUser(userId) {
+            showAlert('Edit functionality coming soon', 'info');
+        }
+
+        async function deleteUser(userId, userName) {
+            if (confirm(`Are you sure you want to delete ${userName}?`)) {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/admin/users/${userId}`, {
+                        method: 'DELETE',
+                        headers: { 'Authorization': `Bearer ${adminToken}` }
+                    });
+                    const data = await response.json();
+
+                    if (data.success) {
+                        showAlert('User deleted successfully', 'success');
+                        loadUsers();
+                    } else {
+                        showAlert('Failed to delete user', 'error');
+                    }
+                } catch (error) {
+                    console.error('Error deleting user:', error);
+                    showAlert('Error deleting user', 'error');
+                }
+            }
+        }
+
+        // Change password
+        async function changePassword() {
+            const newPassword = document.getElementById('newPassword').value;
+            if (!newPassword) {
+                showAlert('Please enter a new password', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/users/password`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${adminToken}`
+                    },
+                    body: JSON.stringify({ 
+                        currentPassword: prompt('Enter current password:'),
+                        newPassword 
+                    })
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    showAlert('Password changed successfully', 'success');
+                    document.getElementById('newPassword').value = '';
+                } else {
+                    showAlert('Failed to change password', 'error');
+                }
+            } catch (error) {
+                console.error('Error changing password:', error);
+                showAlert('Error changing password', 'error');
+            }
+        }
+
+        // Utilities
+        function showAlert(message, type) {
+            const alert = document.getElementById('alert');
+            alert.textContent = message;
+            alert.className = `alert show alert-${type}`;
+            setTimeout(() => alert.classList.remove('show'), 3000);
+        }
+
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('collapsed');
+            document.querySelector('.main-content').classList.toggle('expanded');
+        }
+
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('adminToken');
+                window.location.href = 'admin-login.html';
+            }
+        }
+
+        function viewQuizDetails(moduleId) {
+            showAlert(`Viewing details for Module ${moduleId}`, 'info');
+        }
+    </script>
+</body>
+</html>

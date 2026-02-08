@@ -1,0 +1,175 @@
+{
+  "users": [
+    {
+      "_id": "user_001",
+      "name": "Admin User",
+      "email": "admin@example.com",
+      "password": "$2a$10$YKZBukauM5z6uR6.r0FfpeiWRi0wU6YjVNjRBUhBX8xjxT8LH8Ezi",
+      "role": "admin",
+      "enrolledCourses": [
+        "cybersec-101",
+        "network-security",
+        "cryptography-basics"
+      ],
+      "completedCourses": [],
+      "totalScore": 850,
+      "certificatesEarned": 0,
+      "createdAt": "2025-12-01T08:00:00Z",
+      "updatedAt": "2025-12-04T10:00:00Z",
+      "isActive": true
+    },
+    {
+      "_id": "user_002",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "password": "$2a$10$Ydvw5YYvX.WoZ8r9pK3..eI8m2L5j9X6hQ4pL2v1K8t9R5u0M9s2m",
+      "role": "user",
+      "enrolledCourses": ["cybersec-101"],
+      "completedCourses": ["network-security"],
+      "totalScore": 720,
+      "certificatesEarned": 1,
+      "createdAt": "2025-12-02T09:30:00Z",
+      "updatedAt": "2025-12-04T11:00:00Z",
+      "isActive": true
+    },
+    {
+      "_id": "user_003",
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "password": "$2a$10$3xJ9kL2m5N8p1Q4r7S0tEuJ5w6X9y2Z3a6B9c2D5e8F1g4H7i0j3",
+      "role": "user",
+      "enrolledCourses": ["cybersec-101", "cryptography-basics"],
+      "completedCourses": [],
+      "totalScore": 680,
+      "certificatesEarned": 0,
+      "createdAt": "2025-12-03T10:15:00Z",
+      "updatedAt": "2025-12-04T09:45:00Z",
+      "isActive": true
+    },
+    {
+      "_id": "user_004",
+      "name": "Bob Wilson",
+      "email": "bob@example.com",
+      "password": "$2a$10$2vR8kL1m9N3p2Q7r4S1tYzW0x3J6k9M2n5O8p1Q4r7S0t3U6v9x2",
+      "role": "user",
+      "enrolledCourses": ["network-security"],
+      "completedCourses": ["cybersec-101"],
+      "totalScore": 790,
+      "certificatesEarned": 2,
+      "createdAt": "2025-12-01T14:20:00Z",
+      "updatedAt": "2025-12-04T08:30:00Z",
+      "isActive": true
+    }
+  ],
+  "quizzes": [
+    {
+      "_id": "quiz_001",
+      "title": "Cybersecurity Basics Quiz",
+      "module": "cybersec-101",
+      "questions": 10,
+      "totalAttempts": 45,
+      "averageScore": 78.5,
+      "passRate": 82
+    },
+    {
+      "_id": "quiz_002",
+      "title": "Network Security Quiz",
+      "module": "network-security",
+      "questions": 15,
+      "totalAttempts": 38,
+      "averageScore": 81.2,
+      "passRate": 89
+    },
+    {
+      "_id": "quiz_003",
+      "title": "Cryptography Basics Quiz",
+      "module": "cryptography-basics",
+      "questions": 12,
+      "totalAttempts": 22,
+      "averageScore": 75.8,
+      "passRate": 73
+    }
+  ],
+  "progress": [
+    {
+      "_id": "prog_001",
+      "userId": "user_002",
+      "courseId": "cybersec-101",
+      "lessonsCompleted": 8,
+      "totalLessons": 10,
+      "quizzesPassed": 3,
+      "totalQuizzes": 4,
+      "averageScore": 82.5,
+      "completionPercentage": 80
+    },
+    {
+      "_id": "prog_002",
+      "userId": "user_002",
+      "courseId": "network-security",
+      "lessonsCompleted": 10,
+      "totalLessons": 10,
+      "quizzesPassed": 4,
+      "totalQuizzes": 4,
+      "averageScore": 88.0,
+      "completionPercentage": 100
+    },
+    {
+      "_id": "prog_003",
+      "userId": "user_003",
+      "courseId": "cybersec-101",
+      "lessonsCompleted": 5,
+      "totalLessons": 10,
+      "quizzesPassed": 1,
+      "totalQuizzes": 2,
+      "averageScore": 75.0,
+      "completionPercentage": 50
+    },
+    {
+      "_id": "prog_004",
+      "userId": "user_004",
+      "courseId": "network-security",
+      "lessonsCompleted": 10,
+      "totalLessons": 10,
+      "quizzesPassed": 4,
+      "totalQuizzes": 4,
+      "averageScore": 90.5,
+      "completionPercentage": 100
+    },
+    {
+      "_id": "prog_005",
+      "userId": "user_004",
+      "courseId": "cybersec-101",
+      "lessonsCompleted": 10,
+      "totalLessons": 10,
+      "quizzesPassed": 4,
+      "totalQuizzes": 4,
+      "averageScore": 86.0,
+      "completionPercentage": 100
+    }
+  ],
+  "statistics": {
+    "totalUsers": 4,
+    "activeUsers": 4,
+    "totalQuizzes": 3,
+    "averageScore": 79.5,
+    "certificatesEarned": 3,
+    "platformCompletion": 68,
+    "modules": [
+      {
+        "name": "cybersec-101",
+        "completions": 3,
+        "averageScore": 78.5
+      },
+      {
+        "name": "network-security",
+        "completions": 2,
+        "averageScore": 84.6
+      },
+      {
+        "name": "cryptography-basics",
+        "completions": 0,
+        "averageScore": 0
+      }
+    ]
+  }
+}

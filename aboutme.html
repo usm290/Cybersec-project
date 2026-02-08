@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the Programmer - The Essential Five: Cybersecurity Awareness</title>
+    <!-- Load Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind to use a clean font and custom styles -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#1E40AF', // Blue
+                        'secondary': '#34D399', // Green
+                        'background': '#F9FAFB', // Light Gray
+                        'card-bg': '#FFFFFF',
+                        'accent-dark': '#0F339C', // Darker Blue for hover
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-background font-sans min-h-screen">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-card-bg shadow-md border-b-2 border-primary/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <img src="logo.svg" alt="CyberSec Essentials Logo" class="w-8 h-8 logo-animate transition duration-300">
+                    <h1 class="text-2xl font-bold text-primary">CyberSec Essentials</h1>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-primary transition duration-150 font-medium">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-primary transition duration-150 font-medium">About Course</a>
+                    <a href="aboutme.html" class="text-primary font-bold border-b-2 border-primary pb-2">About Me</a>
+                    <button class="dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle Dark Mode">
+                        <span id="theme-icon">🌙</span>
+                        <span id="theme-text">Dark</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-primary to-accent-dark text-white py-20 px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="mb-6">
+                    <div class="w-24 h-24 mx-auto bg-secondary rounded-full flex items-center justify-center shadow-lg">
+                        <svg class="w-12 h-12 text-gray-900" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+                    </div>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
+                    Abdulbaqi Usman
+                </h1>
+                <p class="text-lg md:text-xl text-gray-100 mb-2">
+                    Full-Stack Developer & Cybersecurity Awareness Educator
+                </p>
+                <p class="text-gray-200 text-lg">
+                    Creating impactful educational experiences through innovative web development
+                </p>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="max-w-5xl mx-auto px-6 py-16">
+            
+            <!-- Introduction -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold text-primary mb-6 border-b-4 border-secondary pb-3">Welcome</h2>
+                <div class="bg-card-bg p-8 rounded-xl shadow-lg">
+                    <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                        Hello! I'm <strong>Abdulbaqi Usman</strong>, a passionate full-stack developer and cybersecurity awareness advocate. I created "The Essential Five: Cybersecurity Awareness" course to help individuals understand and protect themselves against the ever-evolving landscape of cyber threats.
+                    </p>
+                    <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                        With a deep commitment to cybersecurity education, I believe that awareness is the strongest defense against cyber attacks. This course is the culmination of my desire to make cybersecurity knowledge accessible and engaging for everyone, regardless of their technical background.
+                    </p>
+                    <p class="text-gray-700 text-lg leading-relaxed">
+                        My approach combines modern web development practices with educational best practices to create an interactive, user-friendly learning experience that empowers individuals to take control of their digital security.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Professional Journey -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold text-primary mb-6 border-b-4 border-secondary pb-3">Professional Journey</h2>
+                <div class="space-y-6">
+                    <div class="bg-card-bg p-6 rounded-xl shadow-md border-l-4 border-primary">
+                        <h3 class="text-xl font-bold text-primary mb-2">Full-Stack Development</h3>
+                        <p class="text-gray-700">
+                            I specialize in building modern, responsive web applications using HTML, CSS, JavaScript, and various frameworks. My focus is on creating intuitive user interfaces that make complex concepts easy to understand.
+                        </p>
+                    </div>
+                    <div class="bg-card-bg p-6 rounded-xl shadow-md border-l-4 border-secondary">
+                        <h3 class="text-xl font-bold text-secondary mb-2">Cybersecurity Passion</h3>
+                        <p class="text-gray-700">
+                            Beyond development, I'm deeply interested in cybersecurity and digital safety. I stay updated with the latest threats and best practices to create educational content that is both current and practical.
+                        </p>
+                    </div>
+                    <div class="bg-card-bg p-6 rounded-xl shadow-md border-l-4 border-primary">
+                        <h3 class="text-xl font-bold text-primary mb-2">Educational Innovation</h3>
+                        <p class="text-gray-700">
+                            I'm passionate about making technical concepts accessible through interactive learning. This course demonstrates my commitment to creating educational experiences that engage, inform, and empower learners.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills & Expertise -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold text-primary mb-6 border-b-4 border-secondary pb-3">Skills & Expertise</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Frontend -->
+                    <div class="bg-card-bg p-6 rounded-xl shadow-lg hover:shadow-xl transition">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-6 h-6 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path></svg>
+                            <h3 class="text-lg font-bold text-primary">Frontend Development</h3>
+                        </div>
+                        <ul class="text-gray-700 space-y-2">
+                            <li>✓ HTML5 & Semantic Markup</li>
+                            <li>✓ CSS3 & Tailwind CSS</li>
+                            <li>✓ JavaScript (Vanilla & Frameworks)</li>
+                            <li>✓ Responsive Design</li>
+                            <li>✓ Interactive UI Components</li>
+                        </ul>
+                    </div>
+
+                    <!-- Backend & Tools -->
+                    <div class="bg-card-bg p-6 rounded-xl shadow-lg hover:shadow-xl transition">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-6 h-6 text-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+                            <h3 class="text-lg font-bold text-secondary">Tools & Technologies</h3>
+                        </div>
+                        <ul class="text-gray-700 space-y-2">
+                            <li>✓ Version Control (Git)</li>
+                            <li>✓ VS Code & Development Tools</li>
+                            <li>✓ API Development</li>
+                            <li>✓ Database Management</li>
+                            <li>✓ Performance Optimization</li>
+                        </ul>
+                    </div>
+
+                    <!-- Cybersecurity -->
+                    <div class="bg-card-bg p-6 rounded-xl shadow-lg hover:shadow-xl transition">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-6 h-6 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                            <h3 class="text-lg font-bold text-primary">Cybersecurity Knowledge</h3>
+                        </div>
+                        <ul class="text-gray-700 space-y-2">
+                            <li>✓ Security Best Practices</li>
+                            <li>✓ Threat Awareness</li>
+                            <li>✓ Data Protection</li>
+                            <li>✓ Risk Assessment</li>
+                            <li>✓ Security Training</li>
+                        </ul>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="bg-card-bg p-6 rounded-xl shadow-lg hover:shadow-xl transition">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-6 h-6 text-secondary mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                            <h3 class="text-lg font-bold text-secondary">Educational Design</h3>
+                        </div>
+                        <ul class="text-gray-700 space-y-2">
+                            <li>✓ Instructional Design</li>
+                            <li>✓ Content Creation</li>
+                            <li>✓ Interactive Learning</li>
+                            <li>✓ User Experience Design</li>
+                            <li>✓ Assessment & Feedback</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Highlights -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold text-primary mb-6 border-b-4 border-secondary pb-3">This Project</h2>
+                <div class="bg-gradient-to-r from-blue-50 to-green-50 p-8 rounded-xl border-2 border-primary/20">
+                    <h3 class="text-2xl font-bold text-primary mb-4">The Essential Five: Cybersecurity Awareness</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-3">Features Implemented:</h4>
+                            <ul class="text-gray-700 space-y-2">
+                                <li>✓ Interactive course modules</li>
+                                <li>✓ Password strength checker</li>
+                                <li>✓ 20-question quiz system</li>
+                                <li>✓ Performance analytics</li>
+                                <li>✓ Responsive design</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-3">Technical Stack:</h4>
+                            <ul class="text-gray-700 space-y-2">
+                                <li>✓ HTML5 for structure</li>
+                                <li>✓ Tailwind CSS for styling</li>
+                                <li>✓ Vanilla JavaScript for logic</li>
+                                <li>✓ Clean, modular code</li>
+                                <li>✓ Optimized performance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Philosophy -->
+            <div class="mb-16 bg-blue-50 p-8 rounded-xl border-l-4 border-primary">
+                <h2 class="text-3xl font-bold text-primary mb-4">My Philosophy</h2>
+                <p class="text-gray-800 text-lg leading-relaxed mb-4">
+                    I believe that <strong>cybersecurity awareness is not optional—it's essential</strong>. In a world where digital threats are constantly evolving, every person has a role to play in protecting themselves and their organizations.
+                </p>
+                <p class="text-gray-800 text-lg leading-relaxed mb-4">
+                    My approach to development and education combines three core principles:
+                </p>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 h-6 w-6 text-secondary font-bold text-lg mr-3">1</span>
+                        <span class="text-gray-800"><strong>Simplicity:</strong> Make complex concepts easy to understand without oversimplifying.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 h-6 w-6 text-secondary font-bold text-lg mr-3">2</span>
+                        <span class="text-gray-800"><strong>Engagement:</strong> Create interactive, engaging content that keeps learners motivated.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 h-6 w-6 text-secondary font-bold text-lg mr-3">3</span>
+                        <span class="text-gray-800"><strong>Impact:</strong> Build solutions that genuinely help people protect themselves and their data.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Contact & Connect -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                <div class="bg-card-bg p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-primary mb-4">Let's Connect</h3>
+                    <p class="text-gray-700 mb-6">
+                        I'm always interested in discussing cybersecurity, web development, or educational innovation. Feel free to reach out!
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-gray-700">
+                            <svg class="w-5 h-5 text-secondary mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                            <span>usmanabdulbaqi0@gmail.com</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <svg class="w-5 h-5 text-secondary mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.79l.291 1.991a1 1 0 01-.471 1.211l-2.073 1.038a4 4 0 005.824 5.824l1.038-2.073a1 1 0 011.211-.471l1.991.291a1 1 0 01.79.986V17a1 1 0 01-1 1h-2C7.82 18 4 14.18 4 9.5S7.82 3 12.5 3h.5a1 1 0 011-1h-2.153a1 1 0 00-.986.79l-.291 1.991a1 1 0 00.471 1.211l2.073 1.038a4 4 0 00-5.824 5.824l-1.038-2.073a1 1 0 00-1.211-.471l-1.991.291a1 1 0 00-.79.986V16a1 1 0 001 1h2C12.18 17 16 13.18 16 8.5S12.18 0 7.5 0H7a1 1 0 00-1 1v2.153a1 1 0 00.79.986l1.991.291a1 1 0 01.471 1.211l-1.038 2.073A4 4 0 006.053 3.03L4.015 4.07a1 1 0 00-.471 1.211l.291 1.991a1 1 0 00.986.79h2.153a1 1 0 001-1V3z"></path></svg>
+                            <span>+234 7044626300</span>
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <svg class="w-5 h-5 text-secondary mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.868 2.884l-.321-.48A1.5 1.5 0 008.632 2h-.256a1.5 1.5 0 00-1.428.84l-.321.48a1.5 1.5 0 01-2.448.179l-.192-.220a1.5 1.5 0 00-2.331.39l-.143.208a1.5 1.5 0 00.5 1.933l.222.148a1.5 1.5 0 01.578 1.315v.769a1.5 1.5 0 01-.578 1.315l-.222.148a1.5 1.5 0 00-.5 1.933l.143.208a1.5 1.5 0 002.331.39l.192-.22a1.5 1.5 0 012.448.179l.321.48a1.5 1.5 0 001.428.84h.256a1.5 1.5 0 001.428-.84l.321-.48a1.5 1.5 0 012.448-.179l.192.22a1.5 1.5 0 002.331-.39l.143-.208a1.5 1.5 0 00-.5-1.933l-.222-.148a1.5 1.5 0 01-.578-1.315v-.769a1.5 1.5 0 01.578-1.315l.222-.148a1.5 1.5 0 00.5-1.933l-.143-.208a1.5 1.5 0 00-2.331-.39l-.192.22a1.5 1.5 0 01-2.448-.179l-.321-.48zM10 13a3 3 0 110-6 3 3 0 010 6z" clip-rule="evenodd"></path></svg>
+                            <span>LinkedIn: /in/abdulbaqi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-primary to-accent-dark text-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4">Current Focus</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="mr-3">🔒</span>
+                            <span>Advancing cybersecurity awareness education</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3">💻</span>
+                            <span>Building user-centric web applications</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3">📚</span>
+                            <span>Creating impactful educational content</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3">🚀</span>
+                            <span>Exploring emerging web technologies</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="text-center bg-gradient-to-r from-primary to-accent-dark text-white py-12 px-8 rounded-xl shadow-lg">
+                <h2 class="text-3xl font-bold mb-4">Explore the Course</h2>
+                <p class="text-lg mb-8 text-gray-100">See what I've built to help you learn cybersecurity</p>
+                <a href="index.html" class="inline-block bg-secondary text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-green-500 transition duration-300 transform hover:scale-105">
+                    Start Learning
+                </a>
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-gray-300 py-8 mt-16">
+            <div class="max-w-5xl mx-auto px-6 text-center">
+                <p class="mb-2">&copy; 2025 The Essential Five: Cybersecurity Awareness. All rights reserved.</p>
+                <p class="text-sm">Created with passion by Abdulbaqi Usman</p>
+                <div class="space-x-4 mt-4">
+                    <a href="index.html" class="text-gray-400 hover:text-secondary transition">Home</a>
+                    <a href="about.html" class="text-gray-400 hover:text-secondary transition">About Course</a>
+                    <a href="aboutme.html" class="text-gray-400 hover:text-secondary transition">About Me</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+</body>
+</html>
