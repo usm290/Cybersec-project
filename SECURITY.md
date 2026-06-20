@@ -2,20 +2,32 @@
 
 ## Supported Versions
 
-right know the version on my project that is available is version 5.0.0 and 
-version 5.1.0
-
 | Version | Supported          |
 | ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+| 1.0.x   | :white_check_mark: |
+| < 1.0   | :x:                |
 
 ## Reporting a Vulnerability
 
+We take security vulnerabilities seriously. If you discover a security issue in this project, please report it responsibly using GitHub's security advisory feature rather than opening a public issue.
 
+### How to Report
 
-message me direct if you want to repord a vulnareble,i will respond to your 
-vulnarble as soon as am online, and if your vulnarable is accepted you will here 
-from me.
+1. Go to the **Security** tab in this repository
+2. Click **Report a vulnerability** 
+3. Provide details about the vulnerability
+
+### Response Timeline
+
+- **Initial response**: Within 48 hours
+- **Status updates**: You will receive updates on the progress of your reported vulnerability
+- **Resolution**: We will work to patch and release a fix as quickly as possible
+
+### What to Expect
+
+- ✅ Your vulnerability will be taken seriously
+- ✅ You will be credited for the discovery (if desired)
+- ✅ We will keep you informed throughout the process
+- ❌ Public disclosure will only occur after a fix is available
+
+Thank you for helping keep this project secure!
